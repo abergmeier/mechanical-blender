@@ -1,0 +1,46 @@
+
+[cc_library(
+    name = c["name"],
+    hdrs = [
+        "ocio_capi.h",
+    ],
+    srcs = [
+        "ocio_capi.cc",
+	    "fallback_impl.cc",
+	    "ocio_impl.h",
+    ] + c.get("srcs", []),
+    includes = [
+        ".",
+    ],
+    defines = c.get("defines", []),
+    deps = [
+    ],
+    visibility = ["//intern:__subpackages__"],
+) for c in [{
+	"name": "dummy",
+}, {
+	"name": "opencolorio",
+	"srcs": [
+	    "ocio_impl.cc",
+		"ocio_impl_glsl.cc",
+    ],
+	"defines": [
+	    "WITH_OCIO",
+	],
+}
+]]
+
+"""
+set(INC
+	../glew-mx
+	../guardedalloc
+	../gawain
+	../../source/blender/blenlib
+)
+
+if(WITH_OPENCOLORIO)
+
+	data_to_c_simple(gpu_shader_display_transform.glsl SRC)
+	data_to_c_simple(gpu_shader_display_transform_vertex.glsl SRC)
+endif()
+"""
