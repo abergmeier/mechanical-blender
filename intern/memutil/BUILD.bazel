@@ -1,0 +1,18 @@
+cc_library(
+    name = "memutil",
+    hdrs = [
+        "MEM_Allocator.h",
+        "MEM_CacheLimiter.h",
+        "MEM_CacheLimiterC-Api.h",
+        "MEM_RefCounted.h",
+        "MEM_RefCountedC-Api.h",
+    ],
+    srcs = [
+        "intern/MEM_CacheLimiterC-Api.cpp",
+        "intern/MEM_RefCountedC-Api.cpp",
+    ],
+    includes = [
+        ".",
+    ],
+    visibility = ["//intern:__subpackages__"],
+)
