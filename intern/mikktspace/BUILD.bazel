@@ -1,0 +1,22 @@
+"""
+if(CMAKE_COMPILER_IS_GNUCC)
+	remove_cc_flag(
+		"-Wshadow"
+		"-Werror=shadow"
+	)
+endif()
+"""
+
+cc_library(
+    name = "mikktspace",
+    hdrs = [
+        "mikktspace.h",
+    ],
+    srcs = [
+        "mikktspace.c",
+    ],
+    includes = [
+        ".",
+    ],
+    visibility = ["//intern:__subpackages__"],
+)
